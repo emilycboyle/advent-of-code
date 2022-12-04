@@ -8,21 +8,15 @@ def read_file(filename):
 
 
 lines = read_file("day_1.txt")
+lines = list(map(int, lines))
+index = 1
+count = 0
+while index < len(lines):
+    increase = lines[index] > lines[index-1]
+    if increase:
+        count +=1
+    # print(lines[index])
+    # print(increase)
+    index +=1
 
-elves = [[]]
-
-
-for calories in lines:
-
-    if calories == "":
-        elves.append([])
-    else:
-        elves[len(elves)-1].append(int(calories))
-    
-totals = []
-for elf in elves: 
-    totals.append(sum(elf))
-
-
-
-print(max(totals))
+print(count)
