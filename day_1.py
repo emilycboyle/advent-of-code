@@ -9,20 +9,39 @@ def read_file(filename):
 
 lines = read_file("day_1.txt")
 
-elves = [[]]
+def get_calories_for_elves():
+    elves = [[]]
+    for calories in lines:
+
+        if calories == "":
+            elves.append([])
+        else:
+            elves[len(elves)-1].append(int(calories))
+        
+    totals = []
+    for elf in elves: 
+        totals.append(sum(elf))
+
+    return totals
 
 
-for calories in lines:
+def part_1():
+    totals = get_calories_for_elves()
+    print(max(totals))
 
-    if calories == "":
-        elves.append([])
-    else:
-        elves[len(elves)-1].append(int(calories))
-    
-totals = []
-for elf in elves: 
-    totals.append(sum(elf))
+part_1()
+
+def part_2():
+    totals = get_calories_for_elves()
+    # sort totals by desc values
+    # select top 3 values 
+    # sum the top 3 
+
+    totals.sort(reverse=True)
+
+    print(totals)
+    print(sum(totals[0:3]))
+
+part_2()
 
 
-
-print(max(totals))
